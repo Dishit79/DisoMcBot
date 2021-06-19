@@ -10,13 +10,10 @@ from dotenv import load_dotenv
 load_dotenv()
 ip = os.getenv('IP')
 prefix = os.getenv('PREFIX')
-
 #imgur credintials
 client_id = os.getenv('CLIENT_ID')
 api_key = os.getenv('API_KEY')
 url = os.getenv('URL')
-
-
 
 client = commands.Bot(case_insensitive=True,command_prefix=prefix)
 server = MinecraftServer.lookup(ip)
@@ -59,7 +56,7 @@ async def fetchImage(image):
     img_cache = data['data']['link']
     return data['data']['link']
 
-@client.command()
+@client.command(brief='This is the brief description')
 async def status(ctx):
     image = 'https://imgur.com/m84S3So.png'
     data = await fetchData()
@@ -75,39 +72,41 @@ async def status(ctx):
         embed.add_field(name='Players Online: ', value=(f'{data["data"].players.online}/{data["data"].players.max}'), inline=True)
         if 10 > data['data'].players.online > 0 :
             embed.add_field(name='Players Playing : ', value=''.join(f"`{d.name}` " for d in data['data'].players.sample), inline=True)
-        await ctx.send(embed=embed)
+        await ctx.reply(embed=embed)
     elif data['status']=='offline':
         embed = discord.Embed(title="Minecraft Server Status", color=0xdd2e44)
         embed.set_footer(text=f'{ip} | Server Status v2.5 by Jhoan')
         embed.set_thumbnail(url=image)
         embed.add_field(name='Server Status: ', value=':red_circle: **| Offline**', inline=False)
-        await ctx.send(embed=embed)
+        await ctx.reply(embed=embed)
     else:
         embed = discord.Embed(title=":x: **| Server not reachable**", color=0xE10600)
         embed.set_footer(text=f'{ip} | Server Status v2.5 by Jhoan')
         await ctx.send(embed=embed)
 
 @client.group()
+@commands.has_permissions(manage_messages=True)
 async def cache(ctx):
     await ctx.send(f"Img: {img_cache} \n Ip: {ip}")
+
 @cache.command()
 async def reset(ctx):
     global img_cache
     img_cache= None
     await ctx.send(':white_check_mark: Image cache reset')
+
 @cache.command()
 async def ip_change(ctx, newip=ip):
     ip = newip
     await ctx.send(f':white_check_mark: Set ip to {newip}')
 
-@client.event
-async def on_ready():
-    change_status.start()
-    activity = discord.Game(name="Checking server", type=3)
-    await client.change_presence(activity=activity)
-    print('We have logged in as {0.user}'.format(client))
+@cache.error
+async def logging_error(ctx, error):
+    if isinstance(error, commands.CheckFailure):
+        await ctx.reply("Sorry you can not use that command")
+    else:
+        await ctx.reply("Something went wrong")
 
-# TODO: Make this better
 @tasks.loop(seconds=60)
 async def change_status():
     data = await fetchData()
@@ -121,5 +120,11 @@ async def change_status():
         activity = discord.Game(f"no server")
         await client.change_presence(status=discord.Status.dnd, activity=activity)
 
+@client.event
+async def on_ready():
+    change_status.start()
+    activity = discord.Game(name="Checking server", type=3)
+    await client.change_presence(activity=activity)
+    print('We have logged in as {0.user}'.format(client))
 
 client.run(os.getenv('BOT_KEY'))
