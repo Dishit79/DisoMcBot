@@ -1,7 +1,7 @@
 DisoMcBot
 ======
 
-DisoMCBot is a Mineecraft stauts bot for SMP servers. It tells user when server is offline or online and how many players are playing.
+DisoMCBot is a Minecraft status bot for SMP servers. It provides the server's status and online players. You can add and remove cogs to customize the bots commands. The cogs are added automatically and default cog is `status.py`
 
 ## Installation
 1. Install all requirements using `pip install -r requirements.txt`
@@ -20,7 +20,7 @@ BOT_KEY="discord bot token"
 3. Run bot!
 
 ## Todo:
-1. Add error handling
-2. Add birdflop's timing analyser
-3. Rebase everything into cogs
+1. ~~Add error handling~~
+2. ~~Add birdflop's timing analyser~~
+3. ~~Rebase everything into cogs~~
 4. Make a docker
