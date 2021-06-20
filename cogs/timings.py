@@ -4,7 +4,6 @@ import aiohttp
 import yaml
 import re
 
-
 TIMINGS_CHECK = None
 YAML_ERROR = None
 

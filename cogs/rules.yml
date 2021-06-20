@@ -1,0 +1,17 @@
+rules:
+- name: "Important Rules"
+  value: "```1.) Respect Other Players
+    2.) No Harassing Other Players
+    3.) No Glitching
+    4.) No Spamming
+    5.) No Offensive Language
+    6.) No Hack Clients (Xray, PVP, etc )```"
+- name: "Build Rules"
+  value: "```1.) Land Is Claimed By Building On It. Builds Must Be Substantial To Claim land.
+    2.) Do Not Build Within 100 Blocks Of Another Player Without Permission.
+    3.) No Littering or Griefing Players Main Base. This Includes 1x1 Pillars and Floating Trees.
+    4.) Do not circumvent the server's AFK kick feature. Do Not Use Any Sort Of Anti AFK Machine```"
+- name: "PVP Rules"
+  value: "```1.) No Form Of Mindless Aggression
+    2.) PVP Traps Should Not Cause Significant Damage
+    3.) Destruction Of Valuables is Strictly Prohibited```"

@@ -21,6 +21,6 @@ BOT_KEY="discord bot token"
 
 ## Todo:
 1. ~~Add error handling~~
-2. ~~Add birdflop's timing analyser~~
+2. ~~Add birdflop's timing analyzer~~
 3. ~~Rebase everything into cogs~~
 4. Make a docker
