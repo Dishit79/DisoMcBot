@@ -10,7 +10,7 @@ DisoMCBot is a Minecraft status bot for SMP servers. It provides the server's st
 IP="minecraft server ip"
 PREFIX="!"
 
-#imgur credintials
+#imgur credentials
 CLIENT_ID="imgur client id"
 API_KEY="imgur client secret"
 URL="https://api.imgur.com/3"

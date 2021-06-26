@@ -8,7 +8,7 @@ load_dotenv()
 
 ip = os.getenv('IP')
 
-with open("cogs/rules.yml", 'r', encoding="utf8") as stream:
+with open("cogs/data/rules.yml", 'r', encoding="utf8") as stream:
     try:
         Data = yaml.safe_load(stream)
     except yaml.YAMLError as exc:

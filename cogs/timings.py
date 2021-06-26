@@ -7,7 +7,7 @@ import re
 TIMINGS_CHECK = None
 YAML_ERROR = None
 
-with open("cogs/timings_check.yml", 'r', encoding="utf8") as stream:
+with open("cogs/data/timings_check.yml", 'r', encoding="utf8") as stream:
     try:
         TIMINGS_CHECK = yaml.safe_load(stream)
     except yaml.YAMLError as exc:
