@@ -19,6 +19,16 @@ BOT_KEY="discord bot token"
 ```
 3. Run bot!
 
+
+## Preview:
+# Online Embed
+![plot](./preview/image1.png)
+## Offline Embed
+![plot](./preview/image2.jpg)
+## Timings check command
+![plot](./preview/image1.gif)
+
+
 ## Todo:
 1. ~~Add error handling~~
 2. ~~Add birdflop's timing analyzer~~
