@@ -16,6 +16,11 @@ API_KEY="imgur client secret"
 URL="https://api.imgur.com/3"
 
 BOT_KEY="discord bot token"
+
+#SSH credentials (this part not needed if you are not using servercontrol cog)
+SERVER_IP = "ssh server ip"
+SERVER_USER = "dishit"
+SERVER_PAS = "password"
 ```
 3. Run bot!
 
