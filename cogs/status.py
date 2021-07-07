@@ -109,6 +109,14 @@ class Status(commands.Cog):
         ip = newip
         await ctx.send(f':white_check_mark: Set ip to {newip}')
 
+    @settings.command(brief="Reset bot status")
+    async def reset_status(self, ctx, newip=ip):
+        try:
+            self.change_status.start()
+            await ctx.send(":white_check_mark: Status reset")
+        except:
+            await ctx.send(":x: Failed to reset status")
+
     @settings.error
     async def logging_error(self, ctx, error):
         if isinstance(error, commands.CheckFailure):
@@ -119,7 +127,10 @@ class Status(commands.Cog):
 
     @tasks.loop(seconds=60)
     async def change_status(self):
-        data = await self.fetchData()
+        try:
+            data = await self.fetchData()
+        except:
+            data = {'status':'failed'}
         if data['status']=='online':
             activity = discord.Game(f"with {data['data'].players.online} friends | Online")
             await self.client.change_presence(activity=activity)
@@ -127,7 +138,7 @@ class Status(commands.Cog):
             activity = discord.Game(f"Offline | Last checked {time.strftime('%H:%M:%S', time.localtime())}")
             await self.client.change_presence(status=discord.Status.dnd, activity=activity)
         else:
-            activity = discord.Game(f"no server")
+            activity = discord.Game(f"Failed")
             await self.client.change_presence(status=discord.Status.dnd, activity=activity)
 
 def setup(client):

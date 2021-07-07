@@ -405,7 +405,6 @@ class Timings(commands.Cog):
 
 
 
-
 # Returns -1 if version A is older than version B
 # Returns 0 if version A and B are equivalent
 # Returns 1 if version A is newer than version B
