@@ -3,8 +3,6 @@ from discord.ext import commands, tasks
 import asyncio
 import paramiko
 from aiohttp import ClientSession
-import datetime
-import pytz
 import os
 from dotenv import load_dotenv
 load_dotenv()
