@@ -21,12 +21,12 @@ BOT_KEY="discord bot token"
 
 
 ## Preview:
-# Online Embed
+### Online Embed:
 ![plot](./preview/image1.png)
-## Offline Embed
+### Offline Embed:
 ![plot](./preview/image2.jpg)
-## Timings check command
-![plot](./preview/image1.gif)
+### Timings check command:
+![plot](./preview/image3.gif)
 
 
 ## Todo:
