@@ -14,7 +14,7 @@ ip = os.getenv('IP')
 client_id = os.getenv('CLIENT_ID')
 api_key = os.getenv('API_KEY')
 url = os.getenv('URL')
-
+version_number = "2.0"
 
 class Status(commands.Cog):
     def __init__(self,client):
@@ -68,7 +68,7 @@ class Status(commands.Cog):
                 image = await self.fetchImage(data['data'].favicon[22:] or None)
             print(data['data'].description)
             embed = discord.Embed(title="Minecraft Server Status", description=data['data'].description, color=0x78b159)
-            embed.set_footer(text=f'{ip} | Server Status v1.4')
+            embed.set_footer(text=f'{ip} | Server Status v{version_number}')
             embed.set_thumbnail(url=image)
             embed.add_field(name='Server Status: ', value=':green_circle: **| Online**', inline=False)
             embed.add_field(name='Minecraft Version: ', value=data['data'].version.name, inline=False)
@@ -78,13 +78,13 @@ class Status(commands.Cog):
             await ctx.reply(embed=embed)
         elif data['status']=='offline':
             embed = discord.Embed(title="Minecraft Server Status", color=0xdd2e44)
-            embed.set_footer(text=f'{ip} | Server Status v1.4')
+            embed.set_footer(text=f'{ip} | Server Status v{version_number}')
             embed.set_thumbnail(url=image)
             embed.add_field(name='Server Status: ', value=':red_circle: **| Offline**', inline=False)
             await ctx.reply(embed=embed)
         else:
             embed = discord.Embed(title=":x: **| Server not reachable**", color=0xE10600)
-            embed.set_footer(text=f'{ip} | Server Status v1.4')
+            embed.set_footer(text=f'{ip} | Server Status v{version_number}')
             await ctx.send(embed=embed)
 
     @status.error
