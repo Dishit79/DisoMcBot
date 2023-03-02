@@ -30,5 +30,5 @@ class Server(commands.Cog):
         await ctx.reply(f'**Server IP**: __{ip}__')
 
 
-def setup(client):
-    client.add_cog(Server(client))
+async def setup(client):
+    await client.add_cog(Server(client))

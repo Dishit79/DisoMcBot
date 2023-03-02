@@ -26,7 +26,7 @@ class Timings(commands.Cog):
         words = message.content.replace("\n", " ").split(" ")
         timings_url = ""
         embed_var = discord.Embed(title=self.TIMINGS_TITLE, description="These are not magic values. Many of these settings have real consequences on your server's mechanics. See [YouHaveTrouble's guide](https://github.com/YouHaveTrouble/minecraft-optimization/blob/main/README.md) for detailed information on the functionality of each setting.")
-        embed_var.set_footer(text=f"Requested by {message.author.name}#{message.author.discriminator}", icon_url=message.author.avatar_url)
+        embed_var.set_footer(text=f"Requested by {message.author.name}#{message.author.discriminator}", icon_url=message.author.avatar)
 
         for word in words:
             if word.startswith("https://timin") and "/d=" in word:
@@ -415,5 +415,5 @@ def compare_versions(version_a, version_b):
     return (normalize(version_a) > normalize(version_b)) - (normalize(version_a) < normalize(version_b))
 
 
-def setup(client):
-    client.add_cog(Timings(client))
+async def setup(client):
+    await client.add_cog(Timings(client))

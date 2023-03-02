@@ -1,8 +1,9 @@
 import discord
 from discord.ext import commands, tasks
+from discord import app_commands
 import asyncio
 from aiohttp import ClientSession
-from mcstatus import MinecraftServer
+from mcstatus import JavaServer
 import time
 import os
 from dotenv import load_dotenv
@@ -18,7 +19,7 @@ url = os.getenv('URL')
 class Status(commands.Cog):
     def __init__(self,client):
         self.client = client
-        self.server = MinecraftServer.lookup(ip)
+        self.server = JavaServer.lookup(ip)
         self.img_cache = None
         self.change_status.start()
 
@@ -55,11 +56,11 @@ class Status(commands.Cog):
         data = await submit.json()
         await session.close()
         self.img_cache = data['data']['link']
-        return data['data']['link']
-
-    @commands.command(brief='Check server status')
+        return data['data']['link'] 
+    
+    @commands.hybrid_command(brief='Check server status')
     @commands.cooldown(1, 5, commands.BucketType.user)
-    async def status(self, ctx):
+    async def status(self, ctx: discord.Interaction):
         image = 'https://imgur.com/m84S3So.png'
         data = await self.fetchData()
         if data['status']=='online':
@@ -141,5 +142,5 @@ class Status(commands.Cog):
             activity = discord.Game(f"Failed")
             await self.client.change_presence(status=discord.Status.dnd, activity=activity)
 
-def setup(client):
-    client.add_cog(Status(client))
+async def setup(client):
+    await client.add_cog(Status(client))

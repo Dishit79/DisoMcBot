@@ -53,5 +53,5 @@ class ServerControl(commands.Cog):
             await mess.edit(content=":white_check_mark: Server started!")
 
 
-def setup(client):
-    client.add_cog(ServerControl(client))
+async def setup(client):
+    await client.add_cog(ServerControl(client))
